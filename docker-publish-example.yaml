@@ -13,5 +13,6 @@ jobs:
       docker_username: your-dockerhub-username
       context: .
       dockerfile: ./Dockerfile
+      platforms: linux/amd64,linux/arm64
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} 
