@@ -11,6 +11,16 @@ on:
         description: 'DockerHub username'
         required: true
         type: string
+      context:
+        description: 'The build context path.'
+        required: false
+        type: string
+        default: '.'
+      dockerfile:
+        description: 'Path to the Dockerfile.'
+        required: false
+        type: string
+        default: './Dockerfile'
     secrets:
       DOCKERHUB_TOKEN:
         description: 'DockerHub token with write access to the repository'
@@ -42,7 +52,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ inputs.context }}
+          file: ${{ inputs.dockerfile }}
           platforms: ${{ env.PLATFORMS }}
           push: true
           tags: ${{ inputs.docker_image_and_tag }}

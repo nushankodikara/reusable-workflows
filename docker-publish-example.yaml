@@ -11,5 +11,7 @@ jobs:
     with:
       docker_image_and_tag: your-dockerhub-username/your-image-name:latest
       docker_username: your-dockerhub-username
+      context: .
+      dockerfile: ./Dockerfile
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} 
